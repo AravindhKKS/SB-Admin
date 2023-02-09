@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SB DASHBOARD</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style></style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <div class="topbarleft">
+          <div class="content">
+            <span>Bootstrap</span>
+            <label for="toggle" class="button" onclick="toggleBorder(this)">
+              <i id="button" class="fa-solid fa-bars menubaricon"></i>
+            </label>
+          </div>
+          <div class="topbarRight">
+            <form class="topbarRightForm">
+              <input type="text" placeholder="Search for..." />
+              <button class="searchButton">
+                <i class="fa-solid fa-magnifying-glass searchicon"></i>
+              </button>
+            </form>
+            <div class="topRightUser">
+              <button onclick="toggleMenu()" class="topRightUserButton">
+                <i class="fa-solid fa-user userIcon"></i>
+                <i class="fa fa-sort-desc" aria-hidden="true" id="down"></i>
+              </button>
+            </div>
+            <div class="downbar-content" id="dropdown-content">
+              <ul class="list">
+                <li>
+                  StartBootstrap<br />
+                  no-reply@startbootstrap.com
+                </li>
+                <hr class="hr" />
+                <li>Settings</li>
+                <li>Activity Log</li>
+                <hr class="hr" />
+                <li>Logout</li>
+              </ul>
+            </div>
+          </div>
+          <div class="dashboard" id="dashboard">
+            <div class="dashTitle">
+              <span> Dashboard</span>
+            </div>
+            <div class="dashSubTitle">
+              <span>Dashboard</span>
+            </div>
+            <div class="dashcard">
+              <div class="primaryCard">
+                <div class="pCard">Primary Card</div>
+                <div class="PDetail">
+                  <span>View Details</span>
+                  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+              </div>
+
+              <div class="warningCard">
+                <div class="pCard">Primary Card</div>
+                <div class="PDetail">
+                  <span>View Details</span>
+                  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+              </div>
+
+              <div class="successCard">
+                <div class="pCard">Primary Card</div>
+                <div class="PDetail">
+                  <span>View Details</span>
+                  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+              </div>
+
+              <div class="dangerCard">
+                <div class="pCard">Primary Card</div>
+                <div class="PDetail">
+                  <span>View Details</span>
+                  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+            <div class="areaBarChart">
+              <div class="areaChart">
+                <div class="topAreaChart">
+                  <i class="fa-solid fa-chart-area title"></i>
+                  <span>Area Chart Example</span>
+                </div>
+                <div class="centerAreaChart">
+                  <canvas id="areaChart"></canvas>
+                </div>
+                <div class="bottomAreaChart">
+                  <span>Updated yesterday at 11:59 PM</span>
+                </div>
+              </div>
+
+              <div class="barChart">
+                <div class="topBarChart">
+                  <i class="fa-sharp fa-solid fa-chart-column"></i>
+                  <span>Bar Chart Example</span>
+                </div>
+                <div class="centerBarChart">
+                  <canvas id="barChart"></canvas>
+                </div>
+                <div class="bottomBarChart">
+                  <span>Updated yesterday at 11:59 PM</span>
+                </div>
+              </div>
+            </div>
+            <div class="tableTitle">
+              <div class="dataTable">
+                <i class="fa-solid fa-table"></i>
+                <span>DataTable Example</span>
+              </div>
+              <div class="tableSearch">
+                <label for="tableLabel" class="tableLabel"
+                  >Full text search:</label
+                >
+                <input type="text" id="tableLabel" />
+              </div>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Country</th>
+                    <th>Area</th>
+                    <th>Population</th>
+                  </tr>
+                </thead>
+                <tbody id="myTable">
+                  <tr class="odd">
+                    <td class="No">1</td>
+                    <td class="flag">
+                      <img
+                        class="flag1"
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/2560px-Flag_of_Russia.svg.png"
+                      />
+                      Russia
+                    </td>
+                    <td>17,075,200</td>
+                    <td>146,989,754</td>
+                  </tr>
+                  <tr>
+                    <td class="No">2</td>
+                    <td class="flag">
+                      <img
+                        class="flag2"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARQAAAC3CAMAAADkUVG/AAAAYFBMVEX///8AI5XtKTmWo9HsTlrS29r5vMEADJMAGJLtJTbvJTWkqbj6+vrAra/AwMCprbi2uL7CuboAHpUAH5z5Jji+v8He398AAJQAEpPxIDIAA5sAEpqerNv+xsr7ITXtSlfSs0twAAABOElEQVR4nO3dSU5CURRFUawFFLDAupj/LLVlbOzGfw3DN1lrACe5ewJ3sQAAAAAAAAAAAAAAAJijzW7EfjPkZsjDoVv8WD/eTvd0MrR9vhrwfHr2RyeOW18cTXc5GGW5PJ5sJYooovwiShAliBJECaIEUYIoQZQgShAliBJECaIEUYIoQZQgShAliBJECaIEUYIoQZQgShAliBJECaIEUYIoQZQgShAliBJECaIEUYIoQZQgShAliBJECaIEUYIoQZQgShAliBJECaIEUYIoQZQgShAliBJECaIEUYIoQZQgShAliBJECaIEUYIoQZQgShAliBJECaIEUYIoQZQgShAliBJECaKE/xvl5W6617eh7ff7AR+f84my347Yjb3iuB4yn18cV/Nx6BQAAAAAAAAAAAAAAMC3L3d2aInz1OLgAAAAAElFTkSuQmCC"
+                        alt=""
+                      />
+                      France
+                    </td>
+                    <td>640,679</td>
+                    <td>64,979,548</td>
+                  </tr>
+                  <tr class="odd">
+                    <td class="No">3</td>
+                    <td class="flag">
+                      <img
+                        class="flags"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAElBMVEUAAAD/zgDdAADnAADaAAD/2AAtsSEoAAAA9UlEQVR4nO3QsQGAQAwAoejr/ivb50pbGIEZAAAAAAAAAAAAAAAAAAAAAH47bHOzOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSTkpJzUP27xsc7E5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSflpJyUk3JSTspJOSkn5aQ+2jLMGymKnQ8AAAAASUVORK5CYII="
+                        alt=""
+                      />
+                      Germany
+                    </td>
+                    <td>357,114</td>
+                    <td>82,114,224</td>
+                  </tr>
+                  <tr>
+                    <td class="No">4</td>
+
+                    <td class="flag">
+                      <img
+                        class="flags"
+                        src="data:image/png;base64,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"
+                        alt=""
+                      />
+                      Portugal
+                    </td>
+                    <td>92,090</td>
+                    <td>10,329,506</td>
+                  </tr>
+                  <tr class="odd">
+                    <td class="No">5</td>
+                    <td class="flag">
+                      <img
+                        class="flags"
+                        src="data:image/png;base64,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"
+                        alt=""
+                      />
+                      Canada
+                    </td>
+                    <td>9,976,140</td>
+                    <td>36,624,199</td>
+                  </tr>
+                  <tr>
+                    <td class="No">6</td>
+                    <td class="flag">
+                      <img
+                        class="flags"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAflBMVEXaJR3//wDZEx7qmRXXAB7ZHB3ZGR3rmxTpkRX++wH++APsoxPZDx776wfcORzbMBz43Qr32Av21Azzxg7ywg/jbBjxvRDiZRnwuBDurhLkdhjeTBv54wntqBLdQxvjcRjfVBroixbnhRbmfxfhXhn88QbwuhD77QbgWRr0zA1ESUreAAAEBklEQVR4nO3d63aqMBAFYBIn4CX11outWuu9x/d/waMiCiEoqF2ayf5+95wFU3bEYVKCAAAAAAAAAAAAAAAAAAAAAAAAAABOOo8+gOdDr/ToQ3g2qi3a6tEH8WRkJCL56IN4MjQWY4QnqyOEwCqbIWvbmtQQnjTqbmvSRXgyxM6jD+KpyPq+JnWE54R6+5r0EJ4TJWK4azuSs0NNZghPgvqHmvQRnkQoEuGjD+VZyPmxJnOEJ0abY002CE9MixP96IN5DuEiVZMFVpSdVHQQngMSaajJVjjM1GSI8Oya05maoFUdmNFBeLbCH6MmPwgPvRk1ecOFYkYH4QnUe64m7753UegjV5MP3y8UauRq0vC8JmqQK4kQA7/Doz8tNfn0+8sxNS01aXodHrW0lESIpc/hsUbH8/BYo+N3eNTUWhIhpgzDo2Qp9FVQky8q9x84VDo1bNXKqK8KarKql/r3raFDRZHrgpO9r7VTbQWy3Z/e27tjS7FUvT+uSE+598yQan9akppjF0mMRkVL6O1WIydLsv34yfUV7+WNHPrAMdDi8vldYeHoRRKTnfHdKzLuOP51SNH3nUvy7XBuErTMtxev11g6nZtEKDeXz7WkvnTq1vUMmt2pJHUWF0lMT37vUJHfieOLa5Yie0etijWDxTWLzGflVf0wyk1CBt0bKtIN3PvGVwa1ri5Ji+FFEqOpvSd9SXPKtiS7pfb1cgVyXtktrlk0v1wDw5zxRRLT7ZdKFXlps7opsVOFTzBsvpjnJkGDskttc8A+N4nSK61Hw7L6cjUOPFhLYmH5jqQ32zSofD/Fm20a+ZHYYp7UxNiIcZ4n2zQq3d978slTJTqehCe3EeM8L7ZpVHxg6sU2jWrR8SI8lo0Y53mwTUNXHeta87+/t2zEOI//Ng3rRoy9/EaeA/bbNAqmyXdt6KIGNvtJ84Jp8l0buqiBzX3SvGAjxmHwqGCsifk2DW3rxZ7a0LptG2v64h0esoxCptvQ1gb2inV4LBsxGkYbmgb5D2uO2zSO8tHph+Z3vDDsmz/EOjxkjuZYB4+obvzUL+PwqJGxUIzsF4CeGMvOiG94dHYu9KPwGZ8ytqd/8w0PZR4VD88lgjJN2xe24VGT1GmOO+cHj2SQvlWZcA2PTs0ptS4/G0+PNbW4hucUnea/MmGgf8cvR1zDo9rJGW50ucZzqI9PDJm+EEBHh/Oblf+lHyewI57hoXjRrDZ4lIw1MX0hQGd/cp8VB4+SCWyWLwTY/1n/a/a/0r7Tz/KFALs/69+7ahpaBj2mLwTYRie69rwoYhkeGTVu2P9KowbDV9HI6Ka/QqEkxwXl1lNiWBIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABm/gP56ymZArQ4RgAAAABJRU5ErkJggg=="
+                        alt=""
+                      />
+                      Vietnam
+                    </td>
+                    <td>331,212</td>
+                    <td>95,540,800</td>
+                  </tr>
+                  <tr class="odd">
+                    <td class="No">7</td>
+                    <td class="flag">
+                      <img
+                        class="flags"
+                        src="https://cdn-icons-png.flaticon.com/128/630/630591.png"
+                        alt=""
+                      />
+                      Brazil
+                    </td>
+                    <td>8,515,767</td>
+                    <td>209,288,278</td>
+                  </tr>
+                  <tr>
+                    <td class="No">8</td>
+                    <td class="flag">
+                      <img
+                        class="flags"
+                        src="https://cdn-icons-png.flaticon.com/128/630/630615.png"
+                        alt=""
+                      />
+                      Mexico
+                    </td>
+                    <td>1,964,375</td>
+                    <td>129,163,276</td>
+                  </tr>
+                  <tr class="odd">
+                    <td class="No">9</td>
+                    <td class="flag">
+                      <img
+                        class="flags"
+                        src="https://cdn-icons-png.flaticon.com/128/555/555526.png"
+                        alt=""
+                      />
+                      United States
+                    </td>
+                    <td>9,629,091</td>
+                    <td>324,459,463</td>
+                  </tr>
+                  <tr>
+                    <td class="No">10</td>
+                    <td class="flag">
+                      <img
+                        class="flags"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmv9i9Hoxed5qxK-JfYSmgijeAd3_ZjJa9tA&usqp=CAU"
+                        alt=""
+                      />
+                      India
+                    </td>
+                    <td>3,287,263</td>
+                    <td>1,324,171,354</td>
+                  </tr>
+                  <tr class="odd">
+                    <td class="No">11</td>
+                    <td class="flag">
+                      <img
+                        class="flags"
+                        src="https://cdn-icons-png.flaticon.com/512/939/939651.png"
+                        alt=""
+                      />
+                      Indonesia
+                    </td>
+                    <td>1,910,931</td>
+                    <td>263,991,379</td>
+                  </tr>
+                  <tr>
+                    <td class="No">12</td>
+                    <td class="flag">
+                      <img
+                        class="flags"
+                        src="https://cdn-icons-png.flaticon.com/512/206/206782.png"
+                        alt=""
+                      />
+                      Tuvalu
+                    </td>
+                    <td>26</td>
+                    <td>11,097</td>
+                  </tr>
+                  <tr class="odd">
+                    <td class="No">13</td>
+                    <td class="flag">
+                      <img
+                        class="flags"
+                        src="https://cdn-icons-png.flaticon.com/512/5111/5111624.png"
+                        alt=""
+                      />
+                      China
+                    </td>
+                    <td>9,596,960</td>
+                    <td>1,409,517,397</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="bottomItem">
+                <div id="pagination">
+                  <button id="previous">
+                    <i class="fa-solid fa-angles-left"></i>
+                  </button>
+                  <span id="pageNumbers"></span>
+                  <button id="next">
+                    <i class="fa-solid fa-angles-right"></i>
+                  </button>
+                </div>
+                <div class="data">
+                  <select id="itemCount">
+                    <option value="2" class="item">2 items per page</option>
+                    <option value="4" class="item">4 items per page</option>
+                    <option value="6" class="item">6 items per page</option>
+                  </select>
+                  <div class="icon-container">
+                    <div class="icon">
+                      <i class="fas fa-caret-up"></i>
+                    </div>
+                    <div class="icon1">
+                      <i class="fas fa-caret-down"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <div class="loginCopyContent">
+      <span class="loginCopy">Copyright © Your Website 2020</span>
+      <div>
+        <a href="index.html" class="registerTerm">
+          <span class="loginPolicy">Privacy Policy</span>
+          <span class="loginPolicy"> ·Terms & Conditions</span>
+        </a>
+      </div>
+          </div>
+        </div>
+        <input type="checkbox" id="toggle" />
+        <nav class="leftbar" id="leftbar">
+          <ul>
+            <li>
+              <a href="#"><span class="title">CORE</span></a>
+            </li>
+            <li>
+              <a href="index.html"
+                ><i class="fa-solid fa-gauge title"></i>
+                <span class="text">Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="title"> INTERFACE </span>
+              </a>
+            </li>
+            <li>
+              <div class="layout" onclick="downlayout(this)">
+                <i class="fa-solid fa-table-columns title"></i>
+                <span class="text"> Layouts</span>
+                <i class="fa-solid fa-angle-right arrow"></i>
+              </div>
+            </li>
+            <ul class="hidden-content" id="layout-content">
+              <li id="dark"><a href="#" class="down">Static Navigation</a></li>
+              <li id="light">
+                <a href="#" class="down" onclick="togglenav(this)"
+                  >Light Sidenav</a
+                >
+              </li>
+            </ul>
+            <li>
+              <div class="page" onclick="downpage(this)">
+                <i class="fa-solid fa-book-open title"></i>
+                <span class="text"> Pages </span>
+                <i class="fa-solid fa-angle-right arrow"></i>
+              </div>
+              <ul id="page" class="hidden-content">
+                <li>
+                  <a href="#"  onclick="downauth(this)"   class="down">
+                    <span >Authentication</span>
+                    <i class="fa-solid fa-angle-right arrow1"></i>
+                  </a>
+                  <ul id="auth" class="hidden-content">
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="forgot.html">Forget Password</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#" onclick="downerror(this)" class="down">
+                    <span >Error</span>
+                    <i class="fa-solid fa-angle-right arrow1"></i>
+                  </a>
+                  <ul id="error" class="hidden-content">
+                    <li><a href="page401.html">401 Pages</a></li>
+                    <li><a href="page404.html">404 Pages</a></li>
+                    <li><a href="page500.html">500 Pages</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><span class="title">ADDONS</span></a>
+            </li>
+            <li>
+              <a href="chart.html">
+                <i class="fa-solid fa-chart-area title"></i>
+                <span class="text">Charts</span>
+              </a>
+            </li>
+            <li>
+              <a href="table.html">
+                <i class="fa-solid fa-table title"></i>
+                <span class="text">Tables</span>
+              </a>
+            </li>
+          </ul>
+          <div class="logged">
+            <span>
+              <h5>Logged in as:</h5>
+              <h3>Start Bootstrap</h3>
+            </span>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>

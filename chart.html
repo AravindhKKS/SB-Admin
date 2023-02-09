@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>chart</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYi  cR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="chart.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <div class="topbarleft">
+          <div class="content">
+            <span>Bootstrap</span>
+            <label for="toggle" class="button" onclick="toggleBorder(this)">
+              <i id="button" class="fa-solid fa-bars menubaricon"></i>
+            </label>
+          </div>
+          <div class="topbarRight">
+            <form class="topbarRightForm">
+              <input type="text" placeholder="Search for..." />
+              <button class="searchButton">
+                <i class="fa-solid fa-magnifying-glass searchicon"></i>
+              </button>
+            </form>
+            <div class="topRightUser">
+              <button onclick="toggleMenu()" class="topRightUserButton">
+                <i class="fa-solid fa-user userIcon"></i>
+                <i class="fa fa-sort-desc" aria-hidden="true" id="down"></i>
+              </button>
+            </div>
+            <div class="downbar-content" id="dropdown-content">
+              <ul class="list">
+                <li>
+                  StartBootstrap<br />
+                  no-reply@startbootstrap.com
+                </li>
+                <hr class="hr" />
+                <li>Settings</li>
+                <li>Activity Log</li>
+                <hr class="hr" />
+                <li>Logout</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- CHARTS -->
+        <div class="Dashboard" id="dashboard">
+          <div class="chartTitle">Charts</div>
+          <div class="chartDash">
+            <a href="index.html">Dashboard</a>
+            <span>/ Charts</span>
+          </div>
+          <div class="chartText">
+            Chart.js is a third party plugin that is used to generate the charts
+            in this template. The charts below have been customized - for
+            further customization options, please visit the official
+            <a href="https://www.chartjs.org/docs/latest/">
+              Chart.js documentation.</a
+            >
+          </div>
+          <div class="areaChart">
+            <div class="topAreaChart">
+              <i class="fa-solid fa-chart-area title"></i>
+              <span>Area Chart Example</span>
+            </div>
+            <div class="centerAreaChart">
+              <canvas id="areaChart"></canvas>
+            </div>
+            <div class="bottomAreaChart">
+              <span>Updated yesterday at 11:59 PM</span>
+            </div>
+          </div>
+          <div class="barpieChart">
+            <div class="barChart">
+              <div class="topBarChart">
+                <i class="fa-sharp fa-solid fa-chart-column"></i>
+                <span>Bar Chart Example</span>
+              </div>
+              <div class="centerBarChart">
+                <canvas id="barChart"></canvas>
+              </div>
+              <div class="bottomBarChart">
+                <span>Updated yesterday at 11:59 PM</span>
+              </div>
+            </div>
+            <div class="pieChart">
+              <div class="topPieChart">
+                <i class="fa-sharp fa-solid fa-chart-pie"></i>
+                <span>Pie Chart Example</span>
+              </div>
+              <div class="centerPieChart">
+                <canvas id="pieChart"></canvas>
+              </div>
+              <div class="bottomPieChart">
+                <span>Updated yesterday at 11:59 PM</span>
+              </div>
+            </div>
+          </div>
+          <div class="loginCopyContent">
+            <span class="loginCopy">Copyright © Your Website 2020</span>
+            <div>
+              <a href="index.html" class="registerTerm">
+                <span class="loginPolicy">Privacy Policy</span>
+                <span class="loginPolicy"> ·Terms & Conditions</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- side bar -->
+        <input type="checkbox" id="toggle" />
+        <nav class="leftbar" id="leftbar">
+          <ul>
+            <li>
+              <a href="#"><span class="title">CORE</span></a>
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fa-solid fa-gauge title"></i>
+                <span class="text">Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="title"> INTERFACE </span>
+              </a>
+            </li>
+            <li>
+              <div class="layout" onclick="downlayout(this)">
+                <i class="fa-solid fa-table-columns title"></i>
+                <span class="text"> Layouts</span>
+                <i class="fa-solid fa-angle-right arrow"></i>
+              </div>
+            </li>
+            <ul class="hidden-content" id="layout-content">
+              <li><a href="#" class="down">Static Navigation</a></li>
+              <li>
+                <a href="#" class="down" onclick="togglenav(this)"
+                  >Light Sidenav</a
+                >
+              </li>
+            </ul>
+            <li>
+              <div class="page" onclick="downpage(this)">
+                <i class="fa-solid fa-book-open title"></i>
+                <span class="text"> Pages </span>
+                <i class="fa-solid fa-angle-right arrow"></i>
+              </div>
+              <ul id="page" class="hidden-content">
+                <li>
+                  <a href="#" onclick="downauth(this)">
+                    <span class="down">Authentication</span>
+                    <i class="fa-solid fa-angle-right arrow1"></i>
+                  </a>
+                  <ul id="auth" class="hidden-content">
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="forgot.html">Forget Password</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#" onclick="downerror(this)">
+                    <span class="down">Error</span>
+                    <i class="fa-solid fa-angle-right arrow1"></i>
+                  </a>
+                  <ul id="error" class="hidden-content">
+                    <li><a href="page401.html">401 Pages</a></li>
+                    <li><a href="page404.html">404 Pages</a></li>
+                    <li><a href="page500.html">500 Pages</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><span class="title">ADDONS</span></a>
+            </li>
+            <li>
+              <a href="chart.html">
+                <i class="fa-solid fa-chart-area title"></i>
+                <span class="text">Charts</span>
+              </a>
+            </li>
+            <li>
+              <a href="table.html">
+                <i class="fa-solid fa-table title"></i>
+                <span class="text">Tables</span>
+              </a>
+            </li>
+          </ul>
+          <div class="logged">
+            <span>
+              <h5>Logged in as:</h5>
+              <h3>Start Bootstrap</h3>
+            </span>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </body>
+  <script src="chart.js"></script>
+</html>
